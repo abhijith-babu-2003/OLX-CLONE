@@ -6,7 +6,6 @@ import searchWhite from "../../assets/search.svg";
 import { UserAuth } from "../Context/Auth";
 import { toast } from 'react-toastify';
 
-
 function Navbar({ togglemodal, toggmodalSell }) {
   const { user, logout } = UserAuth(); 
   const [showDropdown, setShowDropdown] = useState(false);
@@ -40,11 +39,24 @@ function Navbar({ togglemodal, toggmodalSell }) {
     }
   };
 
+  const getDisplayName = () => {
+    if (!user) return null;
+    
+    if (user.displayName) {
+      return user.displayName;
+    } else if (user.email) {
+    
+      return user.email.split('@')[0];
+    } else {
+      return "User";
+    }
+  };
+
   return (
-    <nav className="w-full  fixed top-0 z-50 bg-white shadow-md">
+    <nav className="w-full fixed top-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
         
-        {/* Left Section: Logo + Location Search */}
+       
         <div className="flex items-center gap-5 flex-1">
           <img
             src={logo}
@@ -101,7 +113,7 @@ function Navbar({ togglemodal, toggmodalSell }) {
                   className="flex items-center gap-1 cursor-pointer px-3 py-1.5 rounded-full hover:bg-gray-100"
                   onClick={() => setShowDropdown(!showDropdown)}
                 >
-                  <span className="text-gray-800 font-medium">{user.displayName}</span>
+                  <span className="text-gray-800 font-medium">{getDisplayName()}</span>
                   <img src={arrowDown} alt="Arrow" className="w-3 h-3" />
                 </div>
                 

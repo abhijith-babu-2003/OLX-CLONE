@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../Firebase/Firebase';
 import { toast } from 'react-toastify';
-
-
 
 const Signin = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -34,7 +32,7 @@ const Signin = () => {
 
     try {
       if (isSignup) {
-       
+        // Signup validation
         if (formData.password !== formData.confirmPassword) {
           setError('Passwords do not match');
           setLoading(false);
@@ -45,11 +43,18 @@ const Signin = () => {
           setLoading(false);
           return;
         }
-       
-        await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+        
+        // Create the user
+        const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+        
+        // Set the display name for the newly created user
+        await updateProfile(userCredential.user, {
+          displayName: formData.name
+        });
+        
         toast.success('User created successfully');
       } else {
-     
+        // Sign in existing user
         await signInWithEmailAndPassword(auth, formData.email, formData.password);
         toast.success('User signed in successfully');
       }
