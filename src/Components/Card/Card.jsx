@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Card({ items = [], loading = false }) {
   if (loading) {
     return (
-      <div className="p-6 sm:p-12 mt-24 min-h-screen bg-gray-50">
+      <div className="p-6 sm:p-12 min-h-screen bg-gray-50">
         <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
           {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
             <div
@@ -35,7 +35,7 @@ function Card({ items = [], loading = false }) {
   }
 
   return (
-    <div className="p-6 sm:p-12 min-h-screen bg-gray-50">
+    <div className="p-6 sm:p-12 min-h-screen bg-gray-50 mt-20 rounded-xl">
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {items.map((item) => (
           <Link to="/Details"  state={{item}} key={item.id} style={{borderWidth: '1px'}}>

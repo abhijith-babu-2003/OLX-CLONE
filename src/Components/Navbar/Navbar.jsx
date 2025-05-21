@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 
 function Navbar({ togglemodal, toggmodalSell }) {
-  const { user, logout } = UserAuth(); // Corrected from logOut to logout (common lowercase naming convention)
+  const { user, logout } = UserAuth(); 
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -41,7 +41,7 @@ function Navbar({ togglemodal, toggmodalSell }) {
   };
 
   return (
-    <nav className="w-full fixed top-0 z-50 bg-white shadow-md">
+    <nav className="w-full  fixed top-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
         
         {/* Left Section: Logo + Location Search */}

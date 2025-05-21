@@ -95,14 +95,14 @@ const Sell = (props) => {
 
       console.log("Document written with ID:", docRef.id);
 
-      // Reset form fields
+    
       setTitle("");
       setCategory("");
       setPrice("");
       setDescription("");
       setImage(null);
 
-      // Update items list
+     
       try {
         const datas = await fetchFromFirestore();
         if (typeof setItems === "function") {
@@ -112,7 +112,7 @@ const Sell = (props) => {
         console.error("Error fetching updated items:", fetchError);
       }
       toast.success("Item listed successfully!");
-      // Close modal
+
       toggmodalSell();
     } catch (error) {
       console.error("Firestore error:", error);

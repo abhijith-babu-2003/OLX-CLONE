@@ -34,7 +34,7 @@ const Signin = () => {
 
     try {
       if (isSignup) {
-        // Signup validation
+       
         if (formData.password !== formData.confirmPassword) {
           setError('Passwords do not match');
           setLoading(false);

@@ -8,13 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
+  
   return (
     <>
     <ToastContainer theme="dark"/>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/details" element={<Details/>}/>
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/signin" element={<Signin/>} />
       </Routes>
     </>
   )
